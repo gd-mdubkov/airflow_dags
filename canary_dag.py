@@ -22,9 +22,9 @@ def grid_health_check():
     r = requests.get('https://www.griddynamics.com')
 
     if r.status_code != 200:
-        raise Exception(f"Grid Dynamics health check failed with code: {r.status_code}, body: {r.content}")
+        raise Exception(f"Grid Dynamics website request failed with code: {r.status_code}, body: {r.content}")
 
-    logging.info("Grid Dynamics health check passed with response '%s'", r.content)
+    logging.info("Grid Dynamics website responds with '%s'", r.content)
 
 
 
@@ -33,7 +33,7 @@ with DAG('canary_dag', default_args=default_args, schedule_interval='*/1 * * * *
     dummy_task = DummyOperator(task_id='start_task')
 
     check_data_processor_health = PythonOperator(
-        task_id='check_data_processor_health',
+        task_id='grid_health_check',
         python_callable=grid_health_check,
     )
 
