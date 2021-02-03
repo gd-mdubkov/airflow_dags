@@ -28,8 +28,8 @@ def grid_health_check():
 
 
 
-with DAG('canary_dag', default_args=default_args, schedule_interval='*/1 * * * *', catchup=False,
-         is_paused_upon_creation=False) as dag:
+with DAG('canary_dag', default_args=default_args, schedule_interval='*/1 * * * *', catchup=True,
+         is_paused_upon_creation=True) as dag:
     dummy_task = DummyOperator(task_id='start_task')
 
     check_data_processor_health = PythonOperator(
