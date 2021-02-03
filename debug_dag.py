@@ -32,7 +32,7 @@ with DAG('debug_dag', default_args=default_args, schedule_interval='*/1 * * * *'
     finish_task = DummyOperator(task_id='finish_task')
 
     test_and_sleep_step = PythonOperator(
-        task_id=f'test_and_sleep_task_{num}',
+        task_id='test_and_sleep_task',
         python_callable=test_and_sleep,
     )
     start_task >> test_and_sleep_step >> finish_task
