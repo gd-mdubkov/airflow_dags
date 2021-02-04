@@ -19,7 +19,7 @@ default_args = {
 
 
 def grid_health_check():
-    r = requests.get('https://www.griddynamics.com')
+    r = requests.get('http://www.griddynamics.com')
 
     if r.status_code != 200:
         raise Exception(f"Grid Dynamics website request failed with code: {r.status_code}, body: {r.content}")
