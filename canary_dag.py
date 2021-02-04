@@ -19,12 +19,12 @@ default_args = {
 
 
 def grid_health_check():
-    r = requests.get('http://www.griddynamics.com')
+    r = requests.get('http://google.com')
 
     if r.status_code != 200:
-        raise Exception(f"Grid Dynamics website request failed with code: {r.status_code}, body: {r.content}")
+        raise Exception(f"Google website request failed with code: {r.status_code}, body: {r.content}")
 
-    logging.info("Grid Dynamics website responds with '%s'", r.content)
+    logging.info("Google website responds with '%s'", r.content)
 
 
 
